@@ -1,30 +1,9 @@
-<header>
-  <div class="header-logo">
-    <a href="/">SpeakerApp</a>
-  </div>
-  <ul class="header-menus">
-    <li>
-      <a href="/about">SpeakerAppとは</a>
-    </li>
-  </ul>
-</header>
-
-
-<%
-   posts = [
-     "今日からRailsの勉強するよー！",
-     "投稿一覧ページ作成中！" 
-]
-%>
-
 <div class="main posts-index">
-    <div class="container">
-
+  <div class="container">
     <% @posts.each do |post| %>
-    <div class="posts-index-item">
-    <%= post.content %>
- </div>
-
-  <% end %>
+      <div class="posts-index-item">
+        <%= link_to(post.content, "/posts/#{post.id}") %>
+      </div>
+    <% end %>
   </div>
 </div>
