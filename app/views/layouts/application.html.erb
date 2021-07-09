@@ -13,15 +13,19 @@
   <body>
   <header>
   <div class="header-logo">
-    <a href="/">SpeakerApp</a>
+    <%= link_to("SpeakerApp", "/") %>
   </div>
   <ul class="header-menus">
     <li>
-      <a href="/about">SpeakerAppとは</a>
+
+    <%= link_to("SpeakerAppとは", "/about") %>
+    </li>
+    <li>
+
+    <%= link_to("投稿一覧", "/posts/index") %>
     </li>
   </ul>
 </header>
-
-    <%= yield %>
-  </body>
+<%= yield %>
+</body>
 </html>
