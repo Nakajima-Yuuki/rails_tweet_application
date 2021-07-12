@@ -8,8 +8,8 @@
         <%= @post.created_at %>
       </div>
       <div class="post-menus">
-        <%= link_to("編集", "/posts/#{@post.id}/edit") %>
-        <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>
+        <%= link_to '編集', edit_post_path(@post), style:'border:1px solid skyblue;padding:5px' %></div> 
+        <%= link_to '削除', @post, method: :delete, data: { confirm: 'Are you sure?' }, style:'border:1px solid skyblue;padding:5px' %>
       </div>
     </div>
   </div>
