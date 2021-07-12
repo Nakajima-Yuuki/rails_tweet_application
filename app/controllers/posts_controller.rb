@@ -11,6 +11,11 @@ class PostsController < ApplicationController
     @post = Post.new
   end
   
+  def confirm
+    @post = Post.new(post_params)
+    render :new if @post.invalid?
+  end
+  
   def create
     @post = Post.new(content: params[:content])
     if @post.save
@@ -41,6 +46,5 @@ end
     @post.destroy
     flash[:notice]="投稿を削除しました！"
     redirect_to("/posts/index")
-  
-  end
+    end
 end

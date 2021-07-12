@@ -1,0 +1,10 @@
+<%= form_for @post do |f| %>
+    <%= @post.contents %>
+    <%= @post.day %>
+    <div class="actions">
+      <%= f.submit '投稿画面に戻る', name: 'back' %>
+    </div>
+    <div class="actions">
+      <%= f.submit '投稿する' %>
+    </div>
+  <% end %>
