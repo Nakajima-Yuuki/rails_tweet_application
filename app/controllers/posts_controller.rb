@@ -10,19 +10,27 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
+
+  def new
+    if params[:back]
+      @post = Post.new(post_params)
+    else
+      @post = Post.new
+    end
+  end
   
   def confirm
-    @post = Post.new(post_params)
+    @post = Post.new(content: params[:content])
     render :new if @post.invalid?
   end
   
   def create
-    @post = Post.new(content: params[:content])
+    @post = Post.new(post_params)
     if @post.save
       flash[:notice]="投稿を作成しました！"
-      redirect_to("/posts/index")
+      redirect_to posts_index_path
     else
-      render("posts/new")
+      render new
   end
 end
   
@@ -47,4 +55,9 @@ end
     flash[:notice]="投稿を削除しました！"
     redirect_to("/posts/index")
     end
+
+  private
+  def post_params
+    params.require(:post).permit(:content)
+  end
 end
